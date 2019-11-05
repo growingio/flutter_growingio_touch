@@ -36,6 +36,6 @@ android {
 }
 
 dependencies {
+    compileOnly "com.growingio.android:vds-android-agent:track-2.8.4@aar"
     compileOnly "com.growingio.android:gtouch:1.0.0"
-
 }

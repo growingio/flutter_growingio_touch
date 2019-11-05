@@ -13,8 +13,8 @@ public class MyFlutterApplication extends FlutterApplication {
         super.onCreate();
 
         GrowingIO.startWithConfiguration(this, new Configuration()
-                .setTestMode(BuildConfig.DEBUG)
-                .setDebugMode(BuildConfig.DEBUG));
+                .setTestMode(false)
+                .setDebugMode(false));
 
         GrowingTouch.startWithConfig(this, new GTouchConfig()
                 .setEventPopupShowTimeout(5000)

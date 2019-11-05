@@ -2,13 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_growingio_touch/flutter_growingio_touch.dart';
 import 'package:flutter_growingio_track/flutter_growingio_track.dart';
 
 void main() {
-  runApp(MyApp());
-  GrowingTouch.enableEventPopupAndGenerateAppOpenEvent();
+  Widget app = MyApp();
+  runApp(app);
+  openEventPopup();
+}
+
+void openEventPopup() async {
+  if (!await GrowingTouch.eventPopupEnable) {
+    GrowingTouch.eventPopupListener = EventPopupListener(
+      onLoadSuccess: (eventId, eventType) => print('onLoadSuccess: eventId = ' + eventId + ', eventType = ' + eventType),
+      onLoadFailed: (eventId, eventType, errorCode, description) => print('onLoadFailed: eventId = ' + eventId + ', eventType = ' + eventType + ', errorCode = ' + errorCode.toString() + ', description = ' + description),
+      onCancel: (eventId, eventType) => print('onCancel: eventId = ' + eventId + ', eventType = ' + eventType),
+      onClicked: (eventId, eventType, openUrl) => print('onClicked: eventId = ' + eventId + ', eventType = ' + eventType + ', openUrl = ' + openUrl),
+      onTimeout: (eventId, eventType) => print('onTimeout: eventId = ' + eventId + ', eventType = ' + eventType),
+    );
+    GrowingTouch.enableEventPopupAndGenerateAppOpenEvent();
+  }
 }
 
 class MyApp extends StatefulWidget {
@@ -17,33 +30,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      bool open = await GrowingTouch.eventPopupEnable;
-      platformVersion = open.toString();
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
   }
 
   @override
@@ -65,16 +54,17 @@ class _HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<_HomePage> {
-  bool _popupEnable = false;
+  bool _popupEnable = true;
 
   @override
   void initState() {
     super.initState();
-    initPopupEnable();
+//    initPopupEnable();
   }
 
   Future<void> initPopupEnable() async {
     bool state = await GrowingTouch.eventPopupEnable;
+    print("eventPopupEnable is " + state.toString());
     setState(() {
       _popupEnable = state;
     });
@@ -123,6 +113,28 @@ class _HomePageState extends State<_HomePage> {
             child: Text('打开一个页面'),
             onPressed: () {
               Navigator.push(context, CupertinoPageRoute(builder: (context) => SecondScreen()));
+            },
+            color: Colors.teal,
+          ),
+        ),
+        Container(
+          width: screenWidth,
+          padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+          child: CupertinoButton(
+            child: Text('注册弹窗监听'),
+            onPressed: () {
+              GrowingTouch.eventPopupListener = EventPopupListener(onLoadSuccess: (eventId, eventType) => print('onLoadSuccess: eventId = ' + eventId + ', eventType = ' + eventType));
+            },
+            color: Colors.teal,
+          ),
+        ),
+        Container(
+          width: screenWidth,
+          padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+          child: CupertinoButton(
+            child: Text('注销弹窗监听'),
+            onPressed: () {
+              GrowingTouch.eventPopupListener = null;
             },
             color: Colors.teal,
           ),
