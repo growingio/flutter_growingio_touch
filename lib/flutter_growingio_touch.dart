@@ -3,17 +3,13 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class GrowingTouch {
+  //flutter_growingio_touch
   static const MethodChannel _methodChannel = const MethodChannel('flutter_growingio_touch_method_channel');
   static const EventChannel _eventChannel = const EventChannel('flutter_growingio_touch_event_channel');
 
   // ignore: cancel_subscriptions
   static StreamSubscription _subscription;
   static EventPopupListener _eventPopupListener;
-
-  static Future<String> get platformVersion async {
-    final String version = await _methodChannel.invokeMethod('getPlatformVersion');
-    return version;
-  }
 
   static set eventPopupEnable(bool enable) {
     _methodChannel.invokeMethod('setEventPopupEnable', enable);
