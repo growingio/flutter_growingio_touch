@@ -24,7 +24,7 @@ The Flutter plugin for GrowingIO Touch.
   [GrowingTouch setDebugEnable:YES];
   [GrowingTouch setEventPopupEnable:YES];
   ```
-特别需要注意的是：请确保 [GrowingTouch start];在 [Growing startWithAccountId:@"GrowingIO官网申请的项目ID"]; 之后调用
+特别需要注意的是：请确保 `[GrowingTouch start]`;在 `[Growing startWithAccountId:@"GrowingIO官网申请的项目ID"]`; 之后调用
 
 ### Android 的初始化
   
@@ -192,3 +192,5 @@ iOS 弹窗的点击跳转依赖原生的导航控制器，因此若需要点击�
 1. 在弹窗事件监听者的方法中接管跳转事件，在flutter中实现页面跳转
 
 2. 在原生项目中添加导航控制器，确保弹窗点击跳转时能获取到原生的导航控制器
+
+3. 其他具体使用请参考此仓库中的demo
