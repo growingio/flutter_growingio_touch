@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 #include "GeneratedPluginRegistrant.h"
-#import "Growing.h"
-#import <GrowingTouchKit/GrowingTouchKit.h>
+#import <Growing.h>
+#import <GrowingTouchCoreKit/GrowingTouchCoreKit.h>
 
 @implementation AppDelegate
 

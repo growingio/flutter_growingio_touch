@@ -37,7 +37,7 @@ end
 
 target 'Runner' do
 
-  pod 'GrowingTouchKit', '~> 1.0.3'
+  pod 'GrowingTouch/GrowingTouchKit', '~> 1.1.2'
   # Prepare symlinks folder. We use symlinks to avoid having Podfile.lock
   # referring to absolute paths on developers' machines.
   system('rm -rf .symlinks')

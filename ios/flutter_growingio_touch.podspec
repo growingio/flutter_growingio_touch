@@ -16,7 +16,7 @@ The Flutter plugin for GrowingIO Touch.
   s.dependency 'Flutter'
   s.static_framework = true
   s.ios.deployment_target = '8.0'
-  s.dependency 'GrowingTouchKit'
+  s.dependency 'GrowingTouch/GrowingTouchKit'
 
 end
 

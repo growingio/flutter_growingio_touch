@@ -1,5 +1,5 @@
 #import "FlutterGrowingIOTouchPlugin.h"
-#import <GrowingTouchKit/GrowingTouchKit.h>
+#import <GrowingTouchCoreKit/GrowingTouchCoreKit.h>
 #import <WebKit/WebKit.h>
 
 static NSString *const GIO_FLUTTER_TOUCH_METHOD_CHANNEL = @"flutter_growingio_touch_method_channel";
