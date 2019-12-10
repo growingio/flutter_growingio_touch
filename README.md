@@ -16,7 +16,7 @@ The Flutter plugin for GrowingIO Touch.
   #import <Growing.h>
   #import <GrowingTouchCoreKit/GrowingTouchCoreKit.h>
   ```
-  进行SDK的初始化（一般在AppDelegate中的application:didFinishLaunchingWithOptions:方法中），仅需要初始化一次即可
+  进行SDK的初始化（一般在`AppDelegate`中的`application:didFinishLaunchingWithOptions:`方法中），仅需要初始化一次即可
   
   ```objc
   [Growing startWithAccountId:@"GrowingIO官网申请的项目ID"];
@@ -35,7 +35,7 @@ The Flutter plugin for GrowingIO Touch.
   import com.growingio.android.sdk.gtouch.GrowingTouch;
   import com.growingio.android.sdk.gtouch.config.GTouchConfig;
   ```
-  进行SDK的初始化（一般在MyFlutterApplication中的onCreate方法中），仅需要初始化一次即可
+  进行SDK的初始化（一般在`MyFlutterApplication`中的`onCreate`方法中），仅需要初始化一次即可
   
   ```java
      
@@ -49,7 +49,7 @@ The Flutter plugin for GrowingIO Touch.
                 .setUploadExceptionEnable(false)
                 .setDebugEnable(BuildConfig.DEBUG));
   ```
-  特别需要注意的是：请确保 GrowingTouch.startWithConfig 在  GrowingIO.startWithConfiguration 之后调用
+  特别需要注意的是：请确保 `GrowingTouch.startWithConfig` 在 `GrowingIO.startWithConfiguration` 之后调用
 
 ## package文件引用
 
@@ -96,7 +96,7 @@ bool state = await GrowingTouch.eventPopupEnable;
 
 应用场景时：担心弹窗SDK在APP启动的Logo页或者闪屏页显示弹窗，这时可以选择在初始化时关闭弹窗开关，然后在APP的内容页打开时再打开弹窗开关。
 
-如果只是单纯调用GrowingTouch.setEventPopupEnable(true)只会打开弹窗开关，并不会触发"打开APP"的弹窗事件。调用该API则会打开弹窗的同时触发一个"打开APP"的弹窗事件。（"打开APP" 对应的是触发时机选择“打开App时”）。
+如果只是单纯调用`GrowingTouch.setEventPopupEnable(true);`只会打开弹窗开关，并不会触发"打开APP"的弹窗事件。调用该API则会打开弹窗的同时触发一个"打开APP"的弹窗事件。（"打开APP" 对应的是触发时机选择“打开App时”）。
 
 3.2 代码示例
 
