@@ -41,9 +41,7 @@ public class FlutterGrowingIOTouchPlugin implements MethodCallHandler, EventChan
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
-        if (call.method.equals("getPlatformVersion")) {
-            result.success("Android " + android.os.Build.VERSION.RELEASE);
-        } else if ("setEventPopupEnable".equals(call.method)) {
+        if ("setEventPopupEnable".equals(call.method)) {
             if (call.arguments() != null && call.arguments() instanceof Boolean) {
                 GrowingTouch.setEventPopupEnable((Boolean) call.arguments());
             } else {
