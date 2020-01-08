@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('GTouch Flutter'),
+          title: const Text('GTouchs Flutter'),
         ),
         body: _HomePage(),
       ),
@@ -59,7 +59,7 @@ class _HomePageState extends State<_HomePage> {
   @override
   void initState() {
     super.initState();
-//    initPopupEnable();
+  //  initPopupEnable(); 
   }
 
   Future<void> initPopupEnable() async {
@@ -75,8 +75,7 @@ class _HomePageState extends State<_HomePage> {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return ListView(
       children: <Widget>[
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -139,6 +138,61 @@ class _HomePageState extends State<_HomePage> {
             color: Colors.teal,
           ),
         ),
+         Container(
+          width: screenWidth,
+          padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+          child: CupertinoButton(
+            child: Text('用户李四'),
+            onPressed: () {
+              GrowingIO.setUserId("lisi");
+            },
+            color: Colors.teal,
+          ),
+        ),
+        Container(
+          width: screenWidth,
+          padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+          child: CupertinoButton(
+            child: Text('用户张三'),
+            onPressed: () {
+              GrowingIO.setUserId("zhangsan");
+            },
+            color: Colors.teal,
+          ),
+        ),
+        Container(
+          width: screenWidth,
+          padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+          child: CupertinoButton(
+            child: Text('清除用户'),
+            onPressed: () {
+              GrowingIO.clearUserId();
+            },
+            color: Colors.teal,
+          ),
+        ),
+        Container(
+          width: screenWidth,
+          padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+          child: CupertinoButton(
+            child: Text('设置用户属性,Img展示6次'),
+            onPressed: () {
+              GrowingIO.setPeopleVariable({"imgOpenCnt":"6"});
+            },
+            color: Colors.teal,
+          ),
+        ),
+        Container(
+          width: screenWidth,
+          padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10 ),
+          child: CupertinoButton(
+            child: Text('TestPageOpen,第一关'),
+            onPressed: () {
+              GrowingIO.track("TestPageOpen", variable:{"round_num":"1"});
+            },
+            color: Colors.teal,
+          ),
+        ),
       ],
     );
   }
@@ -152,8 +206,8 @@ class SecondScreen extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((callback) {
       if (!_open) {
         _open = true;
-        print("Page first open ");
-        GrowingIO.track("TestPageOpen");
+        print("Page first open ，触发TestPageOpen事件，且第三关");
+        GrowingIO.track("TestPageOpen", variable:{"round_num":"3"});
       }
     });
 

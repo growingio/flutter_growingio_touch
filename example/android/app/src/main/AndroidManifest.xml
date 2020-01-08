@@ -12,7 +12,9 @@
     <application
         android:name=".MyFlutterApplication"
         android:label="flutter_growingio_touch_example"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:configChanges="screenSize|keyboardHidden|orientation"
+        android:launchMode="singleTask">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

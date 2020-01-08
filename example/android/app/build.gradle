@@ -62,10 +62,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.growingio.android:vds-android-agent:track-2.8.4@aar'
+    implementation 'com.growingio.android:vds-android-agent:track-2.8.9@aar'
 
     //由于触达底层网络库依赖OkHttp3网络库，请添加OkHttp3依赖
     implementation "com.squareup.okhttp3:okhttp:3.12.1"
     //触达SDK依赖
-    implementation "com.growingio.android:gtouch:1.0.0"
+    implementation "com.growingio.android:gtouch:1.2.0"
 }

@@ -13,12 +13,13 @@ public class MyFlutterApplication extends FlutterApplication {
         super.onCreate();
 
         GrowingIO.startWithConfiguration(this, new Configuration()
-                .setTestMode(false)
-                .setDebugMode(false));
+                .setTestMode(true)
+                .setDebugMode(true));
 
         GrowingTouch.startWithConfig(this, new GTouchConfig()
                 .setEventPopupShowTimeout(5000)
-                .setEventPopupEnable(false)
+                .setDebugEnable(true)
+                .setEventPopupEnable(true)
                 .setUploadExceptionEnable(false)
                 .setDebugEnable(BuildConfig.DEBUG));
     }
